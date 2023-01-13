@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import { Catalog } from './components/Catalog/Catalog';
 import { Filter } from './components/Filter/Filter';
-import { SelectedArticle } from './components/SelectedArticle/SelectedArtice';
+import { SelectedArticle } from './components/SelectedArticle/SelectedArticle';
 
 export const App: React.FC = () => {
   return (

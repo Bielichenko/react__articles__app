@@ -1,0 +1,10 @@
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 45px;
+  list-style: none;
+
+  // &__articleCard {
+  //   list-style-type: none;
+  // }
+}
