@@ -1,9 +1,9 @@
-@import '../../utils/vars/vars.scss';
-@import '../../utils/styles/mixins/onTablet';
+@import '../../utils/vars/vars';
+@import '../../utils/styles/mixins';
 
 .articles {
   display: grid;
-  // max-width: $catalog-width--3articles;
+  max-width: $catalog-width--3articles;
   grid-template-columns: 1fr 1fr 1fr; 
   gap: $gap-width;
   
