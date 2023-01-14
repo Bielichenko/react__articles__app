@@ -1,0 +1,14 @@
+@import '../../vars/vars.scss';
+
+@mixin onTablet{
+  @media (max-width: $catalog-width--3articles) {
+    @content
+  }
+};
+
+@mixin onMobile {
+  @media (max-width: $catalog-width--2articles) {
+    @content
+  }
+};
+

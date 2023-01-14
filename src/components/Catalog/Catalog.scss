@@ -1,14 +1,25 @@
+@import '../../utils/vars/vars.scss';
+@import '../../utils/styles/mixins/onTablet';
+
 .articles {
   display: grid;
+  // max-width: $catalog-width--3articles;
   grid-template-columns: 1fr 1fr 1fr; 
-  gap: 45px;
+  gap: $gap-width;
   
   list-style: none;
 
   &__gridCell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
   }
-  
+
+  @include onTablet {
+    grid-template-columns: 1fr 1fr; 
+  }
+
+  @include onMobile {
+    grid-template-columns: 1fr; 
+  }
 }
