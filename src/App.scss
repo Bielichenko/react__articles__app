@@ -1,4 +1,10 @@
-body {
-  font-family: 'Montserrat';
-  color: #363636;
-}
+.app {
+  padding: 50px 7% 63px;
+ 
+  &--dislpayArticle {
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+  }
+} 

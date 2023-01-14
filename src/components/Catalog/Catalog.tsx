@@ -34,7 +34,7 @@ export const Catalog = () => {
     <ul className="articles">
       {articles.map((article:IArticleCard)=> {
         return(
-          <li className="aritcles__articleCard" key={article.id}>
+          <li className="articles__gridCell" key={article.id}>
             <ArticleCard article={article} />
           </li>
         )

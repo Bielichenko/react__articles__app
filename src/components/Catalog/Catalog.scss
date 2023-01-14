@@ -1,10 +1,14 @@
 .articles {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; 
   gap: 45px;
+  
   list-style: none;
 
-  // &__articleCard {
-  //   list-style-type: none;
-  // }
+  &__gridCell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
 }

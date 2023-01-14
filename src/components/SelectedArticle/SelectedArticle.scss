@@ -1,0 +1,15 @@
+.selectedArticle {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: yellowgreen;
+
+  &__image {
+    width: 1440px;
+    height: 245px;
+  }
+}

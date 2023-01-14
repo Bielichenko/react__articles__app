@@ -4,6 +4,8 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { setSelectedArticle } from '../../store/articleSlice';
 
+import './SelectedArticle.scss';
+
 export const SelectedArticle = () => {
   const dispatch = useAppDispatch();
   const selectedArticle = useAppSelector(state => state.articles.selectedArticle)
@@ -15,20 +17,20 @@ export const SelectedArticle = () => {
   return (
     selectedArticle 
     ? (
-    <article className="articleCard">
+    <article className="selectedArticle">
     <img
       src={selectedArticle.imageUrl}
       alt="img"
-      className="articleCard__image"
+      className="selectedArticle__image"
     />
-    <p className="articleCard__date">{selectedArticle.publishedAt}</p>
-    <h4 className="articleCard__title">
+    <p className="selectedArticle__date">{selectedArticle.publishedAt}</p>
+    <h4 className="selectedArticle__title">
       {selectedArticle.title}
     </h4>
-    <p className="articleCard__description">{selectedArticle.summary}</p>
-    <button type="button" className="articleCard__link" onClick={() => backToCatalogHandler()}>Back to homepage</button>
+    <p className="selectedArticle__description">{selectedArticle.summary}</p>
+    <button type="button" className="selectedArticle__link" onClick={() => backToCatalogHandler()}>Back to homepage</button>
   </article> 
     )
-    : <p>choose an article</p>
+    : null
     )
 }
