@@ -2,6 +2,10 @@ $appHorPadd-width: 75px;
 $article-width: 400px;
 $gap-width: 45px;
 
-$catalog-width--3articles: calc(#{$article-width} * 3 + #{$gap-width} * 2 + #{$appHorPadd-width} * 2);
-$catalog-width--2articles: calc(#{$article-width} * 2 + #{$gap-width} * 1 + #{$appHorPadd-width} * 2);
+$catalog-width--3articles: calc(
+  #{$article-width} * 3 + #{$gap-width} * 2 + #{$appHorPadd-width} * 2
+);
+$catalog-width--2articles: calc(
+  #{$article-width} * 2 + #{$gap-width} + #{$appHorPadd-width} * 2
+);
 $catalog-width--1article: calc(#{$article-width} + #{$appHorPadd-width} * 2);

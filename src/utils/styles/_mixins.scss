@@ -1,19 +1,19 @@
 @import "../vars/vars";
 
 @mixin onTablet {
-  @media (max-width: $catalog-width--3articles) {
+  @media (max-width: calc(#{$catalog-width--3articles} - 1px)) {
     @content;
   }
-};
+}
 
 @mixin onMobile {
-  @media (max-width: $catalog-width--2articles) {
+  @media (max-width: calc(#{$catalog-width--2articles} - 1px)) {
     @content;
   }
-};
+}
 
 @mixin onSmallMobile {
-  @media (max-width: $catalog-width--1article) {
+  @media (max-width: calc(#{$catalog-width--1article} - 1px)) {
     @content;
   }
-};
+} ;

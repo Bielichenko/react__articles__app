@@ -1,23 +1,28 @@
 /*eslint-disable*/
 
-import React from 'react';
+import React, { useState } from 'react'
+import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { setSelectedArticle } from '../../store/articleSlice';
 
 import './SelectedArticle.scss';
 
 export const SelectedArticle = () => {
+  const [isClosing, setIsClosing] = useState(false);
+
   const dispatch = useAppDispatch();
   const selectedArticle = useAppSelector(state => state.articles.selectedArticle)
 
-  const backToCatalogHandler = () => {
-    dispatch(setSelectedArticle(null))
+  const closeArticleHandler = () => {
+    setIsClosing(true);
+    setTimeout(setIsClosing, 700, false)
+    setTimeout(dispatch, 700, setSelectedArticle(null))
   }
 
   return (
-    selectedArticle 
+       selectedArticle 
     ? (
-    <article className="selectedArticle">
+    <article className={cn("selectedArticle", {"selectedArticle--isClosing": isClosing})}>
     <img
       src={selectedArticle.imageUrl}
       alt="img"
@@ -28,7 +33,7 @@ export const SelectedArticle = () => {
       {selectedArticle.title}
     </h4>
     <p className="selectedArticle__description">{selectedArticle.summary}</p>
-    <button type="button" className="selectedArticle__link" onClick={() => backToCatalogHandler()}>Back to homepage</button>
+    <button type="button" className="selectedArticle__link" onClick={() => closeArticleHandler()}>Back to homepage</button>
   </article> 
     )
     : null
