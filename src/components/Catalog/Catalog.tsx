@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { setArticles, setSelectedArticle } from '../../store/articleSlice';
 import { IArticleCard } from '../../types/IArticleCard';
-import { ArticleCard } from '../ArticleCard/ArticleCard';
+import { ArticleCard } from '../ArticleCard/ArticleCard1';
 
 import './Catalog.scss'
 

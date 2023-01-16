@@ -3,17 +3,10 @@
 
 .articles {
   display: grid;
-  max-width: $catalog-width--3articles;
   grid-template-columns: 1fr 1fr 1fr; 
   gap: $gap-width;
   
   list-style: none;
-
-  &__gridCell {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-  }
 
   @include onTablet {
     grid-template-columns: 1fr 1fr; 
