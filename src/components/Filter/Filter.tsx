@@ -31,6 +31,7 @@ export const Filter = () => {
 
     return (
       <div className="filter">
+        <h2>Filter by keywords</h2>
         <input className="filter__input" type="" value={userInput} onChange={(e) => {inputHandler(e.target.value)}}/>
       </div>
     )

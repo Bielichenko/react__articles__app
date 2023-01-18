@@ -5,9 +5,12 @@
 import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
 import { normalizeWordsFormat } from './normalizeWordsFormat';
 
-function calculateArticleRankRating(article: IArticleCardPrepared, inputKeyWords: string[]) {
+function calculateArticleRankRating(
+  article: IArticleCardPrepared,
+  inputKeyWords: string[],
+) {
   console.log(inputKeyWords, 'inputKeyWords');
-  let rating = 0;
+  let rankRating = 0;
   const articleTitleWords = article.title.split(' ');
   const articleSummaryWords = article.summary.split(' ');
 
@@ -18,9 +21,9 @@ function calculateArticleRankRating(article: IArticleCardPrepared, inputKeyWords
       const normalizedTitleWord = normalizeWordsFormat(titleWord);
 
       if (normalizedTitleWord === normalizedKeyWord) {
-        rating += 100;
+        rankRating += 100;
       } else if (normalizedTitleWord.includes(normalizedKeyWord)) {
-        rating += 10;
+        rankRating += 10;
       }
     });
 
@@ -28,19 +31,20 @@ function calculateArticleRankRating(article: IArticleCardPrepared, inputKeyWords
       const normalizedSummaryWord = normalizeWordsFormat(summaryWord);
 
       if (normalizedSummaryWord === normalizedKeyWord) {
-        rating += 1;
-      } else if (normalizedSummaryWord.includes(keyWord.toLowerCase())) {
-        rating += 0.5;
+        rankRating += 1;
+      } else if (normalizedSummaryWord.includes(normalizedKeyWord)) {
+        rankRating += 0.5;
       }
     });
   });
 
-  return rating;
+  return rankRating;
 }
 
-export const rankArticlesByKeyWords
-: (articles : IArticleCardPrepared[], inputKeyWords: string[]) => IArticleCardPrepared[]
-= (articles, inputKeyWords) => {
+export function rankArticlesByKeyWords(
+  articles: IArticleCardPrepared[],
+  inputKeyWords: string[],
+) {
   const rankedArticles: IArticleCardPrepared[] = articles.map(article => {
     return (
       { ...article, rankRating: calculateArticleRankRating(article, inputKeyWords) }
@@ -48,4 +52,4 @@ export const rankArticlesByKeyWords
   });
 
   return rankedArticles;
-};
+}
