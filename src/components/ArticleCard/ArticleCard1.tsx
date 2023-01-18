@@ -4,19 +4,19 @@ import React, {useEffect} from "react";
 // import { createRoot } from "react-dom/client";
 import Highlighter from "react-highlight-words";
 import { useAppDispatch, useAppSelector } from '../../hook';
-import { setArticles, setSelectedArticle } from '../../store/articleSlice';
-import { IArticleCard } from '../../types/IArticleCard';
+import {setSelectedArticle } from '../../store/articleSlice';
+import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
 
 import './ArticleCard.scss';
 
 interface props {
-  article: IArticleCard,
+  article: IArticleCardPrepared,
 }
 
 
 export const ArticleCard: React.FC<props> = ({ article}) => {
   const dispatch = useAppDispatch();
-  const userInput = useAppSelector(state => state.articles.userInput)
+  const inputKeyWords = useAppSelector(state => state.articles.inputKeyWords)
   // const selectedArticle = useAppSelector(state => state.articles.selectedArticle);
 
   
@@ -39,7 +39,7 @@ export const ArticleCard: React.FC<props> = ({ article}) => {
       <h4 className="articleCard__title" id="title">
       <Highlighter
           highlightClassName="YourHighlightClass"
-          searchWords={[userInput]}
+          searchWords={inputKeyWords}
           autoEscape={true}
           textToHighlight={article.title}
         />
@@ -49,8 +49,8 @@ export const ArticleCard: React.FC<props> = ({ article}) => {
       
       <p className="articleCard__description">
       <Highlighter
-          highlightClassName="YourHighlightClass"
-          searchWords={[userInput]}
+          // highlightClassName="YourHighlightClass"
+          searchWords={inputKeyWords}
           autoEscape={true}
           textToHighlight={article.summary}
         />

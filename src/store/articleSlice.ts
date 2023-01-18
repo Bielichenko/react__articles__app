@@ -1,36 +1,52 @@
 /* eslint-disable no-param-reassign */
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IArticleCard } from '../types/IArticleCard';
+import { IArticleCard, IArticleCardPrepared } from '../types/IArticleCard';
 
 type ArticlesState = {
-  list: IArticleCard[];
-  selectedArticle: IArticleCard | null;
+  articlesFromServer: IArticleCard[];
+  preparedArticles: IArticleCardPrepared[];
+  selectedArticle: IArticleCardPrepared | null;
   userInput: string;
+  inputKeyWords: string[];
 };
 
 const initialState: ArticlesState = {
-  list: [],
+  articlesFromServer: [],
+  preparedArticles: [],
   selectedArticle: null,
   userInput: '',
+  inputKeyWords: [],
 };
 
 const articleSlice = createSlice({
   name: 'articles',
   initialState,
   reducers: {
-    setArticles(state, action: PayloadAction<IArticleCard[]>) {
-      state.list = action.payload;
+    setArticlesFromServer(state, action: PayloadAction<IArticleCard[]>) {
+      state.articlesFromServer = action.payload;
     },
-    setSelectedArticle(state, action:PayloadAction<IArticleCard | null>) {
+    setPreparedArticles(state, action: PayloadAction<IArticleCardPrepared[]>) {
+      state.preparedArticles = action.payload;
+    },
+    setSelectedArticle(state, action:PayloadAction<IArticleCardPrepared | null>) {
       state.selectedArticle = action.payload;
     },
     setUserInput(state, action:PayloadAction<string>) {
       state.userInput = action.payload;
     },
+    setInputKeyWords(state, action:PayloadAction<string[]>) {
+      state.inputKeyWords = action.payload;
+    },
   },
 });
 
-export const { setArticles, setSelectedArticle, setUserInput } = articleSlice.actions;
+export const {
+  setArticlesFromServer,
+  setPreparedArticles,
+  setSelectedArticle,
+  setUserInput,
+  setInputKeyWords,
+} = articleSlice.actions;
 
 export default articleSlice.reducer;
