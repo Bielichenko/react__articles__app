@@ -47,10 +47,7 @@ export const ArticleCard: React.FC<props> = ({ article}) => {
         alt="img"
         className="articleCard__image"
       />
-      <p className="articleCard__date">{article.publishedAt}</p>
-      {/* <h4 className="articleCard__title" id="title">
-        {article.title}
-      </h4> */}
+      <p className="articleCard__date">{article.publishedAtFormatted}</p>
       <h4 className="articleCard__title" id="title">
       <Highlighter
           highlightClassName="YourHighlightClass"
@@ -58,10 +55,7 @@ export const ArticleCard: React.FC<props> = ({ article}) => {
           autoEscape={true}
           textToHighlight={article.title}
         />
-      </h4>
-      
-      {/* <p className="articleCard__description">{article.summary}</p> */}
-      
+      </h4>      
       <p className="articleCard__description">
       <Highlighter
           // highlightClassName="YourHighlightClass"

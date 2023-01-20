@@ -9,6 +9,7 @@ export interface IArticleCardPrepared {
   id: number;
   imageUrl: string;
   publishedAt: string;
+  publishedAtFormatted: string;
   summary: string;
   title: string;
   rankRating: number;

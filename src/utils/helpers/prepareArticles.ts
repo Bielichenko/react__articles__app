@@ -1,4 +1,5 @@
 import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
+import { formatDate } from './formatDate';
 
 export function prepareArticles(
   articlesFromServer: IArticleCard[],
@@ -7,6 +8,8 @@ export function prepareArticles(
     .map((article: IArticleCard) => {
       let preparedSummary;
 
+      const publishedAtFormatted = formatDate(article.publishedAt);
+
       if (article.summary.length > 100) {
         preparedSummary = `${article.summary.slice(0, 100)}...`;
       } else {
@@ -14,7 +17,11 @@ export function prepareArticles(
       }
 
       return {
-        ...article, id: parseInt(article.id, 10), summary: preparedSummary, rankRating: 0,
+        ...article,
+        id: parseInt(article.id, 10),
+        publishedAtFormatted,
+        summary: preparedSummary,
+        rankRating: 0,
       };
     });
 

@@ -35,6 +35,10 @@ export const Catalog = () => {
     dispatch(setActualArticles(actualArticles));
   }, [preparedArticles, inputKeyWords])
 
+  useEffect(() => {
+    console.log(preparedArticles, 'preparedArticles');
+  })
+
   return (
     <ul className="articles">
       {actualArticles.map(article => 

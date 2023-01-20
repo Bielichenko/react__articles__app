@@ -17,6 +17,8 @@
     width: 400px;
     height: 217px;
 
+    border-radius: 5px;
+
     @include onSmallMobile {
       width: 340px;
     }
