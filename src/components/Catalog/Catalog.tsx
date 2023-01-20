@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hook';
-import { setArticlesFromServer, setPreparedArticles, setSelectedArticle } from '../../store/articleSlice';
+import { setActualArticles, setPreparedArticles, setSelectedArticle } from '../../store/articleSlice';
 import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
 import { prepareArticles } from '../../utils/helpers/prepareArticles';
 import { rankArticlesByKeyWords } from '../../utils/helpers/rankArticles';
@@ -18,32 +18,22 @@ export const Catalog = () => {
   const preparedArticles = useAppSelector(state => state.articles.preparedArticles)
    const selectedArticle = useAppSelector(state => state.articles.selectedArticle);
    const inputKeyWords = useAppSelector(state => state.articles.inputKeyWords)
-
-   const[actualArticles, setActualArticles] = useState<IArticleCardPrepared[]>([]);
-
+   const actualArticles = useAppSelector(state => state.articles.actualArticles)
 
   useEffect(() => {
     fetch(URL)
 	.then(res => res.json())
   .then(data => {
-    dispatch(setArticlesFromServer(data))
     dispatch(setPreparedArticles(prepareArticles(data)))
   })
+  .catch(err => alert(err))
   }, [])
 
   useEffect(() => {
-    setActualArticles(sortAndFilterArticles([...preparedArticles], inputKeyWords));
-    
+    const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords)
+    const actualArticles = sortAndFilterArticles([...articlesRanked], inputKeyWords)
+    dispatch(setActualArticles(actualArticles));
   }, [preparedArticles, inputKeyWords])
-
-  useEffect(() => {
-    console.log(actualArticles, 'actualArticles');
-  })
-
-  useEffect(() => {
-      const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords)
-      dispatch(setPreparedArticles(articlesRanked))
-    }, [inputKeyWords])
 
   return (
     <ul className="articles">

@@ -1,0 +1,53 @@
+@import "../../utils/styles/mixins";
+@import "../../utils/vars/vars";
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  width: 1290px;
+  padding-bottom: 5px;
+  margin-bottom: 40px;
+
+  border-bottom: 1px solid #EAEAEA;
+
+  @include onTablet {
+    width: 840px;
+  }
+
+  @include onMobile {
+    width: 400px;
+  }
+
+  &__title {
+    margin-bottom: 10px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  &__inputWrapper {
+    margin-bottom: 40px;
+    width: 600px;
+    height: 50px;
+
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+
+    @include onMobile {
+      width: 400px;
+    }
+  }
+
+  &__resultNumber {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #363636;
+  }
+}
