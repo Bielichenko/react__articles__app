@@ -65,6 +65,10 @@ export const Catalog = () => {
     setCurrentPage(p);
   };
 
+  useEffect(() => {
+    console.log(preparedArticles);
+  });
+
   return (
     <main className="catalog">
       {

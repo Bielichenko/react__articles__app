@@ -1,6 +1,10 @@
 @import "../../utils/styles/mixins";
 
 .articleCard {
+  position: relative;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
   width: 400px;
   height: 530px;
 
@@ -13,7 +17,7 @@
     width: 340px;
   }
 
-  &__image {
+  &__articleImage {
     width: 400px;
     height: 217px;
 
@@ -24,27 +28,33 @@
     }
   }
 
-  &__dateWrapper {
-    display: flex;
-    justify-content: row;
+  &__textContent {
+    height: calc(530px - 217px);
+    padding: 25px;
+  }
 
+  &__dateWrapper {
     margin-bottom: 24px;
   }
 
   &__calendarImage {
+    vertical-align: bottom;
+
     margin-right: 9px;
   }
 
   &__date {
+    display: inline;
+
+    vertical-align: bottom;
+
     font-weight: 400;
     font-size: 14px;
-    line-height: 150%;
+    line-height: 14px;
     opacity: 0.6;
   }
 
-  &__textContent {
-    padding: 25px;
-  }
+  
 
   &__title {
     margin-bottom: 20px;
@@ -55,16 +65,30 @@
   }
 
   &__description {
-    margin-bottom: 20px;
+    // margin-bottom: 20px;
 
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
   }
 
+  &__linkWrapper {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+
+  }
+
   &__link {
+    display: inline;
+    margin-right: 6px;
+
     font-weight: 700;
     font-size: 16px;
     line-height: 150%;
+  }
+
+  &__linkImage {
+    vertical-align: center;
   }
 }

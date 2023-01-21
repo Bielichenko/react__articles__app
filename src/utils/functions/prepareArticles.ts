@@ -6,14 +6,12 @@ export function prepareArticles(
 ): IArticleCardPrepared[] {
   const preparedArticles = articlesFromServer
     .map((article: IArticleCard) => {
-      let preparedSummary;
+      let preparedSummary = article.summary;
 
       const publishedAtFormatted = formatDate(article.publishedAt);
 
       if (article.summary.length > 100) {
         preparedSummary = `${article.summary.slice(0, 100)}...`;
-      } else {
-        preparedSummary = article.summary;
       }
 
       return {
