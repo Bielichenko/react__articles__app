@@ -23,6 +23,8 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
+import calendarImage from '../../images/calendar.svg';
+
 import './ArticleCard.scss';
 
 interface props {
@@ -47,24 +49,68 @@ export const ArticleCard: React.FC<props> = ({ article}) => {
         alt="img"
         className="articleCard__image"
       />
-      <p className="articleCard__date">{article.publishedAtFormatted}</p>
-      <h4 className="articleCard__title" id="title">
-      <Highlighter
-          highlightClassName="YourHighlightClass"
-          searchWords={inputKeyWords}
-          autoEscape={true}
-          textToHighlight={article.title}
-        />
-      </h4>      
-      <p className="articleCard__description">
-      <Highlighter
-          // highlightClassName="YourHighlightClass"
-          searchWords={inputKeyWords}
-          autoEscape={true}
-          textToHighlight={article.summary}
-        />
-      </p>
-      <button type="button" className="articleCard__link" onClick={() => articleSelectionHandler()}>read more</button>
+      <div className="articleCard__textContent">
+        <div className="articleCard__dateWrapper">
+        <svg className="articleCard__calendarImage"
+								width='14'
+								height='14'
+								fill='none'
+								xmlns='http://www.w3.org/2000/svg'
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+							>
+								<g opacity='0.5' clipPath='url(#clip0_466_331)'>
+									<path
+										d='M12 2.66675H3.99999C2.52724 2.66675 1.33333 3.86066 1.33333 5.33341V12.0001C1.33333 13.4728 2.52724 14.6667 3.99999 14.6667H12C13.4728 14.6667 14.6667 13.4728 14.6667 12.0001V5.33341C14.6667 3.86066 13.4728 2.66675 12 2.66675Z'
+										stroke='#363636'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+									<path
+										d='M5.33333 1.33337V4.00004'
+										stroke='#363636'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+									<path
+										d='M10.6667 1.33337V4.00004'
+										stroke='#363636'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+									<path
+										d='M1.33333 6.66675H14.6667'
+										stroke='#363636'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+									/>
+								</g>
+							</svg>
+        <p className="articleCard__date">{article.publishedAtFormatted}</p>
+        </div>
+          <h4 className="articleCard__title" id="title">
+            <Highlighter
+                highlightClassName="YourHighlightClass"
+                searchWords={inputKeyWords}
+                autoEscape={true}
+                textToHighlight={article.title}
+              />
+          </h4>      
+        <p className="articleCard__description">
+          <Highlighter
+              // highlightClassName="YourHighlightClass"
+              searchWords={inputKeyWords}
+              autoEscape={true}
+              textToHighlight={article.summary}
+          />
+        </p>
+        <button 
+          type="button" 
+          className="articleCard__link" 
+          onClick={() => articleSelectionHandler()}
+        >
+          read more
+        </button>
+      </div>
     </article>
   //   <Card sx={{ maxWidth: 345 }}>
   //   <CardHeader

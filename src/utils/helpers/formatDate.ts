@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 function formatMonth(month: string): string {
   switch (month) {
     case '01':
@@ -49,7 +46,7 @@ function formatDay(date: string): string {
   }
 }
 
-export function formatDate(publishedAt: string) {
+export function formatDate(publishedAt: string): string {
   const [year, month, day] = publishedAt.slice(0, 10).split('-');
   const monthFormatted: string = formatMonth(month);
   const dayFormatted: string = formatDay(parseInt(day, 10).toFixed());
