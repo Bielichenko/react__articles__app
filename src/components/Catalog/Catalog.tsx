@@ -1,48 +1,90 @@
-/*eslint-disable*/
-
+/* eslint-disable no-alert */
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Pagination } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hook';
-import { setActualArticles, setPreparedArticles, setSelectedArticle } from '../../store/articleSlice';
-import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
-import { prepareArticles } from '../../utils/helpers/prepareArticles';
-import { rankArticlesByKeyWords } from '../../utils/helpers/rankArticles';
-import { sortAndFilterArticles } from '../../utils/helpers/sortAndFilterArticles';
+import { setActualArticles, setPreparedArticles } from '../../store/articleSlice';
+import { getArticlesForCurrentPage } from '../../utils/functions/getArticlesForPage';
+import { getPagesAmount } from '../../utils/functions/getPageAmout';
+import { prepareArticles } from '../../utils/functions/prepareArticles';
+import { rankArticlesByKeyWords } from '../../utils/functions/rankArticles';
+import { sortAndFilterArticles } from '../../utils/functions/sortAndFilterArticles';
 import { ArticleCard } from '../ArticleCard/ArticleCard1';
 
-import './Catalog.scss'
+import './Catalog.scss';
 
 const URL = 'https://api.spaceflightnewsapi.net/v3/articles/';
 
 export const Catalog = () => {
   const dispatch = useAppDispatch();
-  const preparedArticles = useAppSelector(state => state.articles.preparedArticles)
-   const selectedArticle = useAppSelector(state => state.articles.selectedArticle);
-   const inputKeyWords = useAppSelector(state => state.articles.inputKeyWords)
-   const actualArticles = useAppSelector(state => state.articles.actualArticles)
+  const preparedArticles = useAppSelector(state => state.articles.preparedArticles);
+  const actualArticles = useAppSelector(state => state.articles.actualArticles);
+  const inputKeyWords = useAppSelector(state => state.articles.inputKeyWords);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [articlesPerPage] = useState(6);
+
+  async function getArticlesFromServer() {
+    setIsLoading(true);
+
+    try {
+      const res = await fetch(URL);
+      const articlesFromServer = await res.json();
+      const preparedArticlesFromServer = prepareArticles(articlesFromServer);
+
+      dispatch(setPreparedArticles(preparedArticlesFromServer));
+    } catch (e) {
+      alert(e);
+    }
+
+    setIsLoading(false);
+  }
 
   useEffect(() => {
-    fetch(URL)
-	.then(res => res.json())
-  .then(data => {
-    dispatch(setPreparedArticles(prepareArticles(data)))
-  })
-  .catch(err => alert(err))
-  }, [])
+    getArticlesFromServer();
+  }, []);
 
   useEffect(() => {
-    const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords)
-    const actualArticles = sortAndFilterArticles([...articlesRanked], inputKeyWords)
-    dispatch(setActualArticles(actualArticles));
-  }, [preparedArticles, inputKeyWords])
+    const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords);
+    const actualAndSortedArticles = sortAndFilterArticles([...articlesRanked], inputKeyWords);
 
-  useEffect(() => {
-    console.log(preparedArticles, 'preparedArticles');
-  })
+    dispatch(setActualArticles(actualAndSortedArticles));
+  }, [preparedArticles, inputKeyWords]);
+
+  const articlesForCurrentPage = getArticlesForCurrentPage(
+    currentPage,
+    articlesPerPage,
+    actualArticles,
+  );
+
+  const pagesAmount = getPagesAmount(actualArticles.length, articlesPerPage);
+
+  const handleChange = (e: any, p: any) => {
+    setCurrentPage(p);
+  };
 
   return (
-    <ul className="articles">
-      {actualArticles.map(article => 
-      <li key={article.id}><ArticleCard article = {article}/></li> )}
-    </ul>    
-  )
-}
+    <main className="catalog">
+      {
+        isLoading
+          ? <p>is loading...</p>
+          : (
+            <>
+              <ul className="articles">
+                { articlesForCurrentPage.map(article => (
+                  <li key={article.id}><ArticleCard article={article} /></li>
+                ))}
+              </ul>
+              <Pagination
+                count={pagesAmount}
+                color="primary"
+                onChange={handleChange}
+              />
+            </>
+          )
+      }
+    </main>
+  );
+};
