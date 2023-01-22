@@ -1,4 +1,4 @@
-@import '../../utils/styles/mixins';
+@import "../../utils/styles/mixins";
 
 .selectedArticle {
   position: relative;
@@ -57,23 +57,36 @@
     color: #000000;
   }
 
+  &__linkWrapper {
+    display: flex;
+    align-items: center;
+
+    margin-left: calc(168px - 75px);
+
+    @include onMobile {
+      width: max-content;
+      margin: 0 auto;
+    }
+  }
+
   &__link {
     display: block;
-    margin-left: calc(168px - 75px);
 
     text-decoration: none;
     font-weight: 700;
     font-size: 16px;
-    line-height: 150%;
     color: #363636;
 
     &:hover {
       text-decoration: underline;
     }
+  }
 
-    @include onMobile {
-      width: max-content;
-      margin: 0 auto
-    }
+  &__linkArrow--reverse {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+
+    transform: scale(-1, 1);
   }
 }

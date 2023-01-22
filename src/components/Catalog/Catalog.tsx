@@ -31,6 +31,7 @@ export const Catalog = () => {
     const actualAndSortedArticles = sortAndFilterArticles([...articlesRanked], inputKeyWords);
 
     dispatch(setActualArticles(actualAndSortedArticles));
+    setCurrentPage(1);
   }, [preparedArticles, inputKeyWords]);
 
   const articlesForCurrentPage = getArticlesForCurrentPage(
@@ -44,6 +45,10 @@ export const Catalog = () => {
   const handleChange = (e: any, p: any) => {
     setCurrentPage(p);
   };
+
+  useEffect(() => {
+    console.log(actualArticles, 'actualArticles');
+  });
 
   return (
     <main className="catalog">

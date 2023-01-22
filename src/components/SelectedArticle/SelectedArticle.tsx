@@ -4,7 +4,6 @@
 import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hooks/hook';
-import { setSelectedArticle } from '../../store/articleSlice';
 import Cirlce from 'react-ts-loaders';
 
 import './SelectedArticle.scss';
@@ -13,6 +12,7 @@ import {
   Link, useLocation, useNavigate, useParams,
 } from 'react-router-dom';
 import { Box } from '@mui/system';
+import arrow from '../../images/arrow.png';
 
 // interface props {
 //   article: IArticleCardPrepared;
@@ -99,7 +99,10 @@ export const SelectedArticle = () => {
               mauris diam amet et sed.
             </p>
           </main>
-          <Link to="/" className="selectedArticle__link">Back to homepage</Link>
+          <div className="selectedArticle__linkWrapper">
+            <img src={arrow} alt="" className="selectedArticle__linkArrow--reverse" />
+            <Link to="/" className="selectedArticle__link">Back to homepage</Link>
+          </div>
         </article>
       )
       : <Cirlce color="#363636" />

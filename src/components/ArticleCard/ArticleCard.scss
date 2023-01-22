@@ -56,7 +56,11 @@
   &__calendarImage {
     vertical-align: bottom;
 
+    width: 16px;
+    height: 16px;
     margin-right: 9px;
+
+    color: #363636;
   }
 
   &__date {
@@ -66,7 +70,7 @@
 
     font-weight: 400;
     font-size: 14px;
-    line-height: 14px;
+    line-height: 16px;
     opacity: 0.6;
   }
 
@@ -90,11 +94,14 @@
     position: absolute;
     left: 25px;
     bottom: 25px;
+
+    display: flex;
+    align-items: center;
   }
 
   &__link {
     display: inline;
-    margin-right: 6px;
+    margin-right: 4px;
 
     font-weight: 700;
     font-size: 16px;
@@ -108,7 +115,10 @@
     }
   }
 
-  &__linkImage {
-    vertical-align: center;
+  &__linkArrow {
+    width: 18px;
+    height: 18px;
+
+    color: #363636;
   }
 }
