@@ -3,7 +3,7 @@
 import { Pagination } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import Cirlce from 'react-ts-loaders';
-import { useAppDispatch, useAppSelector } from '../../hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/hook';
 import { setActualArticles, setPreparedArticles } from '../../store/articleSlice';
 import { getArticlesForCurrentPage } from '../../utils/functions/getArticlesForPage';
 import { getPagesAmount } from '../../utils/functions/getPageAmout';
@@ -20,8 +20,9 @@ export const Catalog = () => {
   const preparedArticles = useAppSelector(state => state.articles.preparedArticles);
   const actualArticles = useAppSelector(state => state.articles.actualArticles);
   const inputKeyWords = useAppSelector(state => state.articles.inputKeyWords);
+  const isLoading = useAppSelector(state => state.articles.isFetching);
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [articlesPerPage] = useState(6);
 
@@ -43,20 +44,6 @@ export const Catalog = () => {
   const handleChange = (e: any, p: any) => {
     setCurrentPage(p);
   };
-
-  useEffect(() => {
-    console.log(preparedArticles);
-
-    if (preparedArticles.length > 0) {
-      setIsLoading(false);
-    } else {
-      setIsLoading(true);
-    }
-  }, [preparedArticles]);
-
-  useEffect(() => {
-    console.log(actualArticles, 'actualArticles');
-  });
 
   return (
     <main className="catalog">

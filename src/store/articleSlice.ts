@@ -5,15 +5,15 @@ import { IArticleCardPrepared } from '../types/IArticleCard';
 
 type ArticlesState = {
   preparedArticles: IArticleCardPrepared[];
+  isFetching: boolean;
   actualArticles: IArticleCardPrepared[];
-  selectedArticle: IArticleCardPrepared | null;
   inputKeyWords: string[];
 };
 
 const initialState: ArticlesState = {
   preparedArticles: [],
+  isFetching: false,
   actualArticles: [],
-  selectedArticle: null,
   inputKeyWords: [],
 };
 
@@ -24,11 +24,11 @@ const articleSlice = createSlice({
     setPreparedArticles(state, action: PayloadAction<IArticleCardPrepared[]>) {
       state.preparedArticles = action.payload;
     },
+    setIsFetching(state, action: PayloadAction<boolean>) {
+      state.isFetching = action.payload;
+    },
     setActualArticles(state, action: PayloadAction<IArticleCardPrepared[]>) {
       state.actualArticles = action.payload;
-    },
-    setSelectedArticle(state, action:PayloadAction<IArticleCardPrepared | null>) {
-      state.selectedArticle = action.payload;
     },
     setInputKeyWords(state, action:PayloadAction<string[]>) {
       state.inputKeyWords = action.payload;
@@ -38,8 +38,8 @@ const articleSlice = createSlice({
 
 export const {
   setPreparedArticles,
+  setIsFetching,
   setActualArticles,
-  setSelectedArticle,
   setInputKeyWords,
 } = articleSlice.actions;
 

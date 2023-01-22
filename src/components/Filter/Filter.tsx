@@ -7,7 +7,7 @@ import Input from '@mui/material/Input';
 import InputAdornment from '@mui/material/InputAdornment';
 import InputLabel from '@mui/material/InputLabel';
 import React, { useState, useEffect, Fragment } from 'react';
-import { useAppDispatch, useAppSelector } from '../../hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/hook';
 import { setInputKeyWords, setPreparedArticles } from '../../store/articleSlice';
 import { getWordsFromInput } from '../../utils/functions/getKeyWordsFromInput';
 import { rankArticlesByKeyWords } from '../../utils/functions/rankArticles';

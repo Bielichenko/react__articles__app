@@ -19,7 +19,7 @@ import { Link, unstable_HistoryRouter } from 'react-router-dom';
 import { Box } from '@mui/system';
 import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
 import { setSelectedArticle } from '../../store/articleSlice';
-import { useAppDispatch, useAppSelector } from '../../hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/hook';
 import calendarImage from '../../images/calendar.svg';
 
 interface props {

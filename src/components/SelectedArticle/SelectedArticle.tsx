@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../hook';
+import { useAppDispatch, useAppSelector } from '../../hooks/hook';
 import { setSelectedArticle } from '../../store/articleSlice';
 import Cirlce from 'react-ts-loaders';
 
