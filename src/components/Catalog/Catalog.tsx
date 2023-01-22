@@ -63,7 +63,7 @@ export const Catalog = () => {
       <Filter />
       {
         isLoading
-          ? <Cirlce color="#1976d2" />
+          ? <Cirlce color="#363636" />
           : (
             <>
               <ul className="catalog__articles">

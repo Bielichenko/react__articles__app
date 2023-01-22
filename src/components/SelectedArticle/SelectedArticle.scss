@@ -27,6 +27,7 @@
     border: 1px solid #eaeaea;
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
+    color: #363636;
   }
 
   &__title {
@@ -54,5 +55,9 @@
     font-size: 16px;
     line-height: 150%;
     color: #363636;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

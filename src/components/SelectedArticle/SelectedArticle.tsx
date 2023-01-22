@@ -12,6 +12,7 @@ import { IArticleCardPrepared } from '../../types/IArticleCard';
 import {
   Link, useLocation, useNavigate, useParams,
 } from 'react-router-dom';
+import { Box } from '@mui/system';
 
 // interface props {
 //   article: IArticleCardPrepared;
@@ -101,6 +102,6 @@ export const SelectedArticle = () => {
           <Link to="/" className="selectedArticle__link">Back to homepage</Link>
         </article>
       )
-      : <Cirlce color="#1976d2" />
+      : <Cirlce color="#363636" />
   );
 };
