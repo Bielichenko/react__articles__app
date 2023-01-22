@@ -1,8 +1,14 @@
+@import '../../utils/styles/mixins';
+
 .selectedArticle {
   position: relative;
 
   width: 100%;
   padding: 150px 75px 45px;
+
+  @include onMobile {
+    padding: 150px 20px 45px;
+  }
 
   &__backImage {
     position: absolute;
@@ -28,6 +34,10 @@
     box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
     border-radius: 5px;
     color: #363636;
+
+    @include onMobile {
+      padding: 35px 15px 50px;
+    }
   }
 
   &__title {
@@ -48,6 +58,7 @@
   }
 
   &__link {
+    display: block;
     margin-left: calc(168px - 75px);
 
     text-decoration: none;
@@ -58,6 +69,11 @@
 
     &:hover {
       text-decoration: underline;
+    }
+
+    @include onMobile {
+      width: max-content;
+      margin: 0 auto
     }
   }
 }
