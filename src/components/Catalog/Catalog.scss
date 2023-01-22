@@ -2,6 +2,12 @@
 @import '../../utils/styles/mixins';
 
 .catalog {
+  padding: 50px 75px 63px;
+
+  @include onSmallMobile {
+    padding: 15px;
+  }
+
   &__articles {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; 
