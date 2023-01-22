@@ -1,41 +1,52 @@
-/*eslint-disable*/
-
-import React, { useState } from 'react'
+/* eslint-disable import/order */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
+import React, { useState, useEffect } from 'react';
 import cn from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { setSelectedArticle } from '../../store/articleSlice';
+import Cirlce from 'react-ts-loaders';
 
 import './SelectedArticle.scss';
+import { IArticleCardPrepared } from '../../types/IArticleCard';
+import {
+  Link, useLocation, useNavigate, useParams,
+} from 'react-router-dom';
+
+// interface props {
+//   article: IArticleCardPrepared;
+// }
 
 export const SelectedArticle = () => {
-  const [isClosing, setIsClosing] = useState(false);
+  const preparedArticles = useAppSelector(state => state.articles.preparedArticles);
+  const { productId } = useParams();
+  const articleId = productId?.split(':')[1];
 
-  const dispatch = useAppDispatch();
-  const selectedArticle = useAppSelector(state => state.articles.selectedArticle)
+  const selectedArticle = preparedArticles.find(article => {
+    if (articleId) {
+      return article.id === parseInt(articleId, 10);
+    }
 
-  const closeArticleHandler = () => {
-    setIsClosing(true);
-    setTimeout(setIsClosing, 700, false)
-    setTimeout(dispatch, 700, setSelectedArticle(null))
-  }
+    return false;
+  });
+
+  useEffect(() => {
+    console.log(productId, 'productId');
+    console.log(preparedArticles, 'preparedArticles');
+  });
+
+  useEffect(() => {
+    console.log('test');
+  });
 
   return (
-       selectedArticle 
-    ? (
-    <article className={cn("selectedArticle", {"selectedArticle--isClosing": isClosing})}>
-    <img
-      src={selectedArticle.imageUrl}
-      alt="img"
-      className="selectedArticle__image"
-    />
-    <p className="selectedArticle__date">{selectedArticle.publishedAt}</p>
-    <h4 className="selectedArticle__title">
-      {selectedArticle.title}
-    </h4>
-    <p className="selectedArticle__description">{selectedArticle.summary}</p>
-    <button type="button" className="selectedArticle__link" onClick={() => closeArticleHandler()}>Back to homepage</button>
-  </article> 
-    )
-    : null
-    )
-}
+    selectedArticle
+      ? (
+        <article>
+          {selectedArticle.title}
+          <Link to="/">Back to homepage</Link>
+        </article>
+      )
+      : <Cirlce color="#1976d2" />
+  );
+};

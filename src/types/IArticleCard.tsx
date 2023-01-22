@@ -11,6 +11,8 @@ export interface IArticleCardPrepared {
   publishedAt: string;
   publishedAtFormatted: string;
   summary: string;
+  summaryShort: string;
   title: string;
   rankRating: number;
+  articleUrl: string;
 }

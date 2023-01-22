@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
 import { formatDate } from './formatDate';
 
@@ -6,20 +7,26 @@ export function prepareArticles(
 ): IArticleCardPrepared[] {
   const preparedArticles = articlesFromServer
     .map((article: IArticleCard) => {
-      let preparedSummary = article.summary;
+      let summaryShort = article.summary;
 
       const publishedAtFormatted = formatDate(article.publishedAt);
+      const articleUrl = `/articleId:${article.id}`;
 
       if (article.summary.length > 100) {
-        preparedSummary = `${article.summary.slice(0, 100)}...`;
+        summaryShort = `${article.summary.slice(0, 100)}...`;
+      }
+
+      if (article.title.length > 70) {
+        summaryShort = `${article.summary.slice(0, 80)}...`;
       }
 
       return {
         ...article,
         id: parseInt(article.id, 10),
         publishedAtFormatted,
-        summary: preparedSummary,
+        summaryShort,
         rankRating: 0,
+        articleUrl,
       };
     });
 

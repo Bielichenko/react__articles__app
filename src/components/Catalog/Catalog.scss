@@ -1,18 +1,29 @@
 @import '../../utils/vars/vars';
 @import '../../utils/styles/mixins';
 
-.articles {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr; 
-  gap: $gap-width;
-  
-  list-style: none;
+.catalog {
+  &__articles {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: $gap-width;
 
-  @include onTablet {
-    grid-template-columns: 1fr 1fr; 
+    margin-bottom: 45px;
+    
+    list-style: none;
+  
+    @include onTablet {
+      grid-template-columns: 1fr 1fr; 
+    }
+  
+    @include onMobile {
+      grid-template-columns: 1fr; 
+    }
   }
 
-  @include onMobile {
-    grid-template-columns: 1fr; 
+  &__paginationWrapper {
+    display: flex;
+    justify-content: center;
   }
 }
+
+

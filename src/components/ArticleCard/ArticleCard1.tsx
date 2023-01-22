@@ -26,6 +26,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import calendarImage from '../../images/calendar.svg';
 
 import './ArticleCard.scss';
+import { Link } from "react-router-dom";
 
 interface props {
   article: IArticleCardPrepared,
@@ -106,16 +107,16 @@ export const ArticleCard: React.FC<props> = ({ article}) => {
               // highlightClassName="YourHighlightClass"
               searchWords={inputKeyWords}
               autoEscape={true}
-              textToHighlight={article.summary}
+              textToHighlight={article.summaryShort}
           />
         </p>
         <div className="articleCard__linkWrapper">
-        <p 
-        className="articleCard__link" 
-        onClick={() => articleSelectionHandler()}
-        > 
-        Read more
-        </p>
+          <Link
+           className="articleCard__link"
+           to={`/productId:${article.id}`} 
+          >
+          Read more
+          </Link>
         <svg
         className="articleCard__linkImage"
 							width='12'

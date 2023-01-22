@@ -1,8 +1,8 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 import { Pagination } from '@mui/material';
 import React, { useState, useEffect } from 'react';
+import Cirlce from 'react-ts-loaders';
 import { useAppDispatch, useAppSelector } from '../../hook';
 import { setActualArticles, setPreparedArticles } from '../../store/articleSlice';
 import { getArticlesForCurrentPage } from '../../utils/functions/getArticlesForPage';
@@ -11,10 +11,9 @@ import { prepareArticles } from '../../utils/functions/prepareArticles';
 import { rankArticlesByKeyWords } from '../../utils/functions/rankArticles';
 import { sortAndFilterArticles } from '../../utils/functions/sortAndFilterArticles';
 import { ArticleCard } from '../ArticleCard/ArticleCard1';
+import { Filter } from '../Filter/Filter';
 
 import './Catalog.scss';
-
-const URL = 'https://api.spaceflightnewsapi.net/v3/articles/';
 
 export const Catalog = () => {
   const dispatch = useAppDispatch();
@@ -25,26 +24,6 @@ export const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [articlesPerPage] = useState(6);
-
-  async function getArticlesFromServer() {
-    setIsLoading(true);
-
-    try {
-      const res = await fetch(URL);
-      const articlesFromServer = await res.json();
-      const preparedArticlesFromServer = prepareArticles(articlesFromServer);
-
-      dispatch(setPreparedArticles(preparedArticlesFromServer));
-    } catch (e) {
-      alert(e);
-    }
-
-    setIsLoading(false);
-  }
-
-  useEffect(() => {
-    getArticlesFromServer();
-  }, []);
 
   useEffect(() => {
     const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords);
@@ -67,25 +46,38 @@ export const Catalog = () => {
 
   useEffect(() => {
     console.log(preparedArticles);
+
+    if (preparedArticles.length > 0) {
+      setIsLoading(false);
+    } else {
+      setIsLoading(true);
+    }
+  }, [preparedArticles]);
+
+  useEffect(() => {
+    console.log(actualArticles, 'actualArticles');
   });
 
   return (
     <main className="catalog">
+      <Filter />
       {
         isLoading
-          ? <p>is loading...</p>
+          ? <Cirlce color="#1976d2" />
           : (
             <>
-              <ul className="articles">
+              <ul className="catalog__articles">
                 { articlesForCurrentPage.map(article => (
                   <li key={article.id}><ArticleCard article={article} /></li>
                 ))}
               </ul>
-              <Pagination
-                count={pagesAmount}
-                color="primary"
-                onChange={handleChange}
-              />
+              <div className="catalog__paginationWrapper">
+                <Pagination
+                  count={pagesAmount}
+                  color="primary"
+                  onChange={handleChange}
+                />
+              </div>
             </>
           )
       }

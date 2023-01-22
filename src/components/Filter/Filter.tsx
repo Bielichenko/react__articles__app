@@ -41,6 +41,7 @@ export const Filter = () => {
   // }, [inputKeyWords])
 
   useEffect(() => {
+    setUserInput(inputKeyWords.join(' '));
     console.log('input', userInput, inputKeyWords)
   })
 

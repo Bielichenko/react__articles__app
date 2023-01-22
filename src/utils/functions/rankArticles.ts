@@ -12,7 +12,7 @@ function calculateArticleRankRating(
   console.log(inputKeyWords, 'inputKeyWords');
   let rankRating = 0;
   const articleTitleWords = article.title.split(' ');
-  const articleSummaryWords = article.summary.split(' ');
+  const articleSummaryWords = article.summaryShort.split(' ');
 
   inputKeyWords.forEach(keyWord => {
     const normalizedKeyWord = normalizeWordsFormat(keyWord);
