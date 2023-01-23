@@ -18,19 +18,15 @@ export const Catalog = () => {
   const actualArticles = useAppSelector(state => state.articles.actualArticles);
   const inputKeyWords = useAppSelector(state => state.articles.inputKeyWords);
   const isLoading = useAppSelector(state => state.articles.isFetching);
-
   const [currentPage, setCurrentPage] = useState(1);
   const [articlesPerPage] = useState(6);
-
-  useEffect(() => {
-    window.scroll(0, 0);
-  }, []);
 
   useEffect(() => {
     const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords);
     const actualAndSortedArticles = filterAndSortArticles([...articlesRanked], inputKeyWords);
 
     dispatch(setActualArticles(actualAndSortedArticles));
+
     setCurrentPage(1);
   }, [preparedArticles, inputKeyWords]);
 

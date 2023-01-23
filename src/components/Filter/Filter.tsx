@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { TextField } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
 import { useAppDispatch, useAppSelector } from '../../hooks/useApp';
@@ -6,23 +6,23 @@ import { setInputKeyWords } from '../../store/articleSlice';
 import { getWordsFromInput } from '../../utils/functions/helpers/getKeyWordsFromInput';
 import searchImage from '../../images/search.jpg';
 import { imageStyle, inputTextStyle, textFieldStyle } from '../../utils/styles/textFieldStyles';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 import './Filter.scss';
 
 export const Filter = () => {
   const dispatch = useAppDispatch();
-  const inputKeyWords = useAppSelector(state => state.articles.inputKeyWords);
   const actualArticles = useAppSelector(state => state.articles.actualArticles);
-  const [userInput, setUserInput] = useState('');
-
-  const inputHandler = (userInputParam: string) => {
-    setUserInput(userInputParam);
-    dispatch(setInputKeyWords(getWordsFromInput(userInputParam)));
-  };
+  const [input, setInput] = useLocalStorage('', 'input');
 
   useEffect(() => {
-    setUserInput(inputKeyWords.join(' '));
+    dispatch(setInputKeyWords(getWordsFromInput(input)));
   }, []);
+
+  const inputHandler = (userInputParam: string) => {
+    setInput(userInputParam);
+    dispatch(setInputKeyWords(getWordsFromInput(userInputParam)));
+  };
 
   return (
     <div className="filter">
@@ -37,7 +37,7 @@ export const Filter = () => {
           onChange={(e) => {
             inputHandler(e.target.value);
           }}
-          value={userInput}
+          value={input}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start" sx={imageStyle}>

@@ -16,7 +16,7 @@ export function prepareArticles(
       }
 
       if (article.title.length > 70) {
-        summaryShort = `${article.summary.slice(0, 80)}...`;
+        summaryShort = `${article.summary.slice(0, 70)}...`;
       }
 
       return {
