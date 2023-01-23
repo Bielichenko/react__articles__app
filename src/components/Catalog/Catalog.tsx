@@ -23,6 +23,10 @@ export const Catalog = () => {
   const [articlesPerPage] = useState(6);
 
   useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
+  useEffect(() => {
     const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords);
     const actualAndSortedArticles = filterAndSortArticles([...articlesRanked], inputKeyWords);
 
@@ -59,6 +63,7 @@ export const Catalog = () => {
                   count={pagesAmount}
                   color="primary"
                   onChange={handleChange}
+                  page={currentPage}
                 />
               </div>
             </>

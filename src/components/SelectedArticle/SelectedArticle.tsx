@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Cirlce from 'react-ts-loaders';
 import { Link, useParams } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useApp';
@@ -10,6 +10,10 @@ export const SelectedArticle = () => {
   const preparedArticles = useAppSelector(state => state.articles.preparedArticles);
   const { productId } = useParams();
   const articleId = productId?.split(':')[1];
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   const selectedArticle = preparedArticles.find(article => {
     if (articleId) {
@@ -78,7 +82,7 @@ export const SelectedArticle = () => {
               mauris diam amet et sed.
             </p>
           </main>
-          <div className="selectedArticle__linkWrapper">
+          <div className="selectedArticle__linkContainer">
             <img src={arrow} alt="img" className="selectedArticle__linkArrow--reverse" />
             <Link to="/" className="selectedArticle__link">Back to homepage</Link>
           </div>

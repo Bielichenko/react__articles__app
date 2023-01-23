@@ -1,7 +1,7 @@
 # React__articles__app
-Hi! This is a test task.
+Hi! This is my test task.
 
-DEMO LINK: https://bielichenko.github.io/react__developers__app/
+DEMO LINK: https://bielichenko.github.io/react__articles__app/
 
 ## Task description
 You need to build Single Page Application with React.
@@ -11,8 +11,6 @@ Home page should contain:
 2. A field to filter by keyword. The user enters keywords into the field and the system displays all articles containing at least one of the keywords in the name or/and description.
 The priority of fields: (1) names; and (2) description. The article with one match in the name is higher than the article with one match in the description.
 The matched keywords should be highlighted with yellow color.
-
-DEMO LINK: https://bielichenko.github.io/react__developers__app/
 
 ### Installing
 + Fork and clone this repository

@@ -50,7 +50,9 @@ export const ArticleCard: React.FC<props> = ({ article }) => {
             />
           </p>
           <div className="articleCard__linkWrapper">
-            <p className="articleCard__link">Read more</p>
+            <p className="articleCard__link">
+              Read more
+            </p>
             <img src={arrow} alt="linkImg" className="articleCard__linkArrow" />
           </div>
         </div>
