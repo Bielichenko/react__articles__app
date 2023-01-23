@@ -31,7 +31,7 @@ export const App: React.FC = () => {
   }, [articlesFromServer, isLoading, error]);
 
   return (
-    <div className="app test">
+    <div className="app">
       <Routes>
         <Route
           path="/"
