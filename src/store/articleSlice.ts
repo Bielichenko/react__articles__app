@@ -17,7 +17,7 @@ const initialState: ArticlesState = {
   inputKeyWords: [],
 };
 
-const articleSlice = createSlice({
+const articlesSlice = createSlice({
   name: 'articles',
   initialState,
   reducers: {
@@ -41,6 +41,6 @@ export const {
   setIsFetching,
   setActualArticles,
   setInputKeyWords,
-} = articleSlice.actions;
+} = articlesSlice.actions;
 
-export default articleSlice.reducer;
+export default articlesSlice.reducer;

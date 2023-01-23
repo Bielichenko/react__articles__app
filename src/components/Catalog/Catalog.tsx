@@ -53,26 +53,20 @@ export const Catalog = () => {
   return (
     <main className="catalog">
       <Filter />
-      {
-        isLoading
-          ? <Cirlce color="#363636" />
-          : (
-            <>
-              <ul className="catalog__articles">
-                { articlesForCurrentPage.map(article => (
-                  <li key={article.id}><ArticleCard article={article} /></li>
-                ))}
-              </ul>
-              <div className="catalog__paginationWrapper">
-                <Pagination
-                  count={pagesAmount}
-                  color="primary"
-                  onChange={handleChange}
-                />
-              </div>
-            </>
-          )
-      }
+      <>
+        <ul className="catalog__articles">
+          { articlesForCurrentPage.map(article => (
+            <li key={article.id}><ArticleCard article={article} /></li>
+          ))}
+        </ul>
+        <div className="catalog__paginationWrapper">
+          <Pagination
+            count={pagesAmount}
+            color="primary"
+            onChange={handleChange}
+          />
+        </div>
+      </>
     </main>
   );
 };
