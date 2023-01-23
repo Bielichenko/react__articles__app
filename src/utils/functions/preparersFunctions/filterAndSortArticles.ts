@@ -1,15 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unneeded-ternary */
-/* eslint-disable no-console */
-/* eslint-disable prefer-const */
-import { IArticleCardPrepared } from '../../types/IArticleCard';
+import { IArticleCardPrepared } from '../../../types/IArticleCard';
 
-export function sortAndFilterArticles(
+export function filterAndSortArticles(
   preparedArticles: IArticleCardPrepared[],
   inputKeyWords: string[],
 ): IArticleCardPrepared[] {
   let actualSortedArticles = preparedArticles;
-  const isUserInput = inputKeyWords.join('').length > 0 ? true : false;
+  const isUserInput = inputKeyWords.join('').length > 0;
 
   if (isUserInput) {
     actualSortedArticles = actualSortedArticles

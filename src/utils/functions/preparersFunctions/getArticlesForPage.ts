@@ -1,4 +1,4 @@
-import { IArticleCardPrepared } from '../../types/IArticleCard';
+import { IArticleCardPrepared } from '../../../types/IArticleCard';
 
 export function getArticlesForCurrentPage(
   currentPage: number,

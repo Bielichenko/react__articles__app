@@ -1,24 +1,19 @@
-/* eslint-disable no-console */
-/* eslint-disable prefer-const */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
-import { normalizeWordsFormat } from './normalizeWordsFormat';
+import { IArticleCardPrepared } from '../../../types/IArticleCard';
+import { formatWord } from '../helpers/formatWord';
 
 function calculateArticleRankRating(
   article: IArticleCardPrepared,
   inputKeyWords: string[],
 ) {
-  console.log(inputKeyWords, 'inputKeyWords');
   let rankRating = 0;
   const articleTitleWords = article.title.split(' ');
   const articleSummaryWords = article.summaryShort.split(' ');
 
   inputKeyWords.forEach(keyWord => {
-    const normalizedKeyWord = normalizeWordsFormat(keyWord);
+    const normalizedKeyWord = formatWord(keyWord);
 
     articleTitleWords.forEach(titleWord => {
-      const normalizedTitleWord = normalizeWordsFormat(titleWord);
+      const normalizedTitleWord = formatWord(titleWord);
 
       if (normalizedTitleWord === normalizedKeyWord) {
         rankRating += 100;
@@ -28,7 +23,7 @@ function calculateArticleRankRating(
     });
 
     articleSummaryWords.forEach(summaryWord => {
-      const normalizedSummaryWord = normalizeWordsFormat(summaryWord);
+      const normalizedSummaryWord = formatWord(summaryWord);
 
       if (normalizedSummaryWord === normalizedKeyWord) {
         rankRating += 1;

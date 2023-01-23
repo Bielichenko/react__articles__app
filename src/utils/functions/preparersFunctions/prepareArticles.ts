@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { IArticleCard, IArticleCardPrepared } from '../../types/IArticleCard';
-import { formatDate } from './formatDate';
+import { IArticleCard, IArticleCardPrepared } from '../../../types/IArticleCard';
+import { formatDate } from '../helpers/formatDate';
 
 export function prepareArticles(
   articlesFromServer: IArticleCard[],

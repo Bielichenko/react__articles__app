@@ -1,1 +1,0 @@
-https://bielichenko.github.io/react__articles__app/

@@ -4,7 +4,7 @@ import { Catalog } from './components/Catalog/Catalog';
 import { SelectedArticle } from './components/SelectedArticle/SelectedArticle';
 import { useAppDispatch } from './hooks/hook';
 import { setIsFetching, setPreparedArticles } from './store/articleSlice';
-import { prepareArticles } from './utils/functions/prepareArticles';
+import { prepareArticles } from './utils/functions/preparersFunctions/prepareArticles';
 import { useFetch } from './hooks/getArticlesFromServer';
 
 import './App.scss';
@@ -31,7 +31,7 @@ export const App: React.FC = () => {
   }, [articlesFromServer, isLoading, error]);
 
   return (
-    <div className="app">
+    <div className="app test">
       <Routes>
         <Route
           path="/"

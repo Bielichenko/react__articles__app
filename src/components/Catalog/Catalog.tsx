@@ -5,11 +5,11 @@ import React, { useState, useEffect } from 'react';
 import Cirlce from 'react-ts-loaders';
 import { useAppDispatch, useAppSelector } from '../../hooks/hook';
 import { setActualArticles, setPreparedArticles } from '../../store/articleSlice';
-import { getArticlesForCurrentPage } from '../../utils/functions/getArticlesForPage';
-import { getPagesAmount } from '../../utils/functions/getPageAmout';
-import { prepareArticles } from '../../utils/functions/prepareArticles';
-import { rankArticlesByKeyWords } from '../../utils/functions/rankArticles';
-import { sortAndFilterArticles } from '../../utils/functions/sortAndFilterArticles';
+import { getArticlesForCurrentPage } from '../../utils/functions/preparersFunctions/getArticlesForPage';
+import { getPagesAmount } from '../../utils/functions/helpers/getPageAmout';
+import { prepareArticles } from '../../utils/functions/preparersFunctions/prepareArticles';
+import { rankArticlesByKeyWords } from '../../utils/functions/preparersFunctions/rankArticles';
+import { filterAndSortArticles } from '../../utils/functions/preparersFunctions/filterAndSortArticles';
 import { ArticleCard } from '../ArticleCard/ArticleCard1';
 import { Filter } from '../Filter/Filter';
 
@@ -28,7 +28,7 @@ export const Catalog = () => {
 
   useEffect(() => {
     const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords);
-    const actualAndSortedArticles = sortAndFilterArticles([...articlesRanked], inputKeyWords);
+    const actualAndSortedArticles = filterAndSortArticles([...articlesRanked], inputKeyWords);
 
     dispatch(setActualArticles(actualAndSortedArticles));
     setCurrentPage(1);
