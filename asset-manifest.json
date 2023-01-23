@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "./static/css/main.114cfcfd.chunk.css",
-    "main.js": "./static/js/main.b93b87ab.chunk.js",
-    "main.js.map": "./static/js/main.b93b87ab.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.8c9895b1.js",
-    "runtime-main.js.map": "./static/js/runtime-main.8c9895b1.js.map",
-    "static/js/2.8f3f9156.chunk.js": "./static/js/2.8f3f9156.chunk.js",
-    "static/js/2.8f3f9156.chunk.js.map": "./static/js/2.8f3f9156.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/main.114cfcfd.chunk.css.map": "./static/css/main.114cfcfd.chunk.css.map",
-    "static/js/2.8f3f9156.chunk.js.LICENSE.txt": "./static/js/2.8f3f9156.chunk.js.LICENSE.txt"
+    "main.css": "/React__Articles__Codebridge/static/css/main.114cfcfd.chunk.css",
+    "main.js": "/React__Articles__Codebridge/static/js/main.86d666a5.chunk.js",
+    "main.js.map": "/React__Articles__Codebridge/static/js/main.86d666a5.chunk.js.map",
+    "runtime-main.js": "/React__Articles__Codebridge/static/js/runtime-main.3ed72718.js",
+    "runtime-main.js.map": "/React__Articles__Codebridge/static/js/runtime-main.3ed72718.js.map",
+    "static/js/2.961cd19f.chunk.js": "/React__Articles__Codebridge/static/js/2.961cd19f.chunk.js",
+    "static/js/2.961cd19f.chunk.js.map": "/React__Articles__Codebridge/static/js/2.961cd19f.chunk.js.map",
+    "index.html": "/React__Articles__Codebridge/index.html",
+    "static/css/main.114cfcfd.chunk.css.map": "/React__Articles__Codebridge/static/css/main.114cfcfd.chunk.css.map",
+    "static/js/2.961cd19f.chunk.js.LICENSE.txt": "/React__Articles__Codebridge/static/js/2.961cd19f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8c9895b1.js",
-    "static/js/2.8f3f9156.chunk.js",
+    "static/js/runtime-main.3ed72718.js",
+    "static/js/2.961cd19f.chunk.js",
     "static/css/main.114cfcfd.chunk.css",
-    "static/js/main.b93b87ab.chunk.js"
+    "static/js/main.86d666a5.chunk.js"
   ]
 }
