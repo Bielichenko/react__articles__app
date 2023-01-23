@@ -1,21 +1,11 @@
 @import "../../utils/styles/mixins";
 
-.linkWrapper {
-  text-decoration: none;
-  color: #363636;
-}
-
 .articleCard {
   position: relative;
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
   width: 400px;
   height: 530px;
 
-  // background: #ffffff;
   border: 1px solid #eaeaea;
-  // box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
 
   transition: 500ms;
@@ -53,7 +43,7 @@
     margin-bottom: 24px;
   }
 
-  &__calendarImage {
+  &__dateImage {
     vertical-align: bottom;
 
     width: 16px;
@@ -83,8 +73,6 @@
   }
 
   &__description {
-    // margin-bottom: 20px;
-
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
@@ -121,4 +109,9 @@
 
     color: #363636;
   }
+}
+
+.cardWrapper {
+  text-decoration: none;
+  color: #363636;
 }

@@ -1,22 +1,10 @@
-/* eslint-disable import/order */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-console */
-import React, { useState, useEffect } from 'react';
-import cn from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import React from 'react';
 import Cirlce from 'react-ts-loaders';
-
-import './SelectedArticle.scss';
-import { IArticleCardPrepared } from '../../types/IArticleCard';
-import {
-  Link, useLocation, useNavigate, useParams,
-} from 'react-router-dom';
-import { Box } from '@mui/system';
+import { Link, useParams } from 'react-router-dom';
+import { useAppSelector } from '../../hooks/useApp';
 import arrow from '../../images/arrow.png';
 
-// interface props {
-//   article: IArticleCardPrepared;
-// }
+import './SelectedArticle.scss';
 
 export const SelectedArticle = () => {
   const preparedArticles = useAppSelector(state => state.articles.preparedArticles);
@@ -29,15 +17,6 @@ export const SelectedArticle = () => {
     }
 
     return false;
-  });
-
-  useEffect(() => {
-    console.log(productId, 'productId');
-    console.log(preparedArticles, 'preparedArticles');
-  });
-
-  useEffect(() => {
-    console.log('test');
   });
 
   return (
@@ -100,7 +79,7 @@ export const SelectedArticle = () => {
             </p>
           </main>
           <div className="selectedArticle__linkWrapper">
-            <img src={arrow} alt="" className="selectedArticle__linkArrow--reverse" />
+            <img src={arrow} alt="img" className="selectedArticle__linkArrow--reverse" />
             <Link to="/" className="selectedArticle__link">Back to homepage</Link>
           </div>
         </article>

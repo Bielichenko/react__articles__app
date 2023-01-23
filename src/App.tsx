@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Catalog } from './components/Catalog/Catalog';
 import { SelectedArticle } from './components/SelectedArticle/SelectedArticle';
-import { useAppDispatch } from './hooks/hook';
+import { useAppDispatch } from './hooks/useApp';
 import { setIsFetching, setPreparedArticles } from './store/articleSlice';
 import { prepareArticles } from './utils/functions/preparersFunctions/prepareArticles';
-import { useFetch } from './hooks/getArticlesFromServer';
+import { useFetch } from './hooks/useFetch';
 
 import './App.scss';
 

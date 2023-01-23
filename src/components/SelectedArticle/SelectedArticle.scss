@@ -51,6 +51,7 @@
   &__textParagraph {
     margin-bottom: 50px;
 
+    text-align: start;
     font-weight: 400;
     font-size: 18px;
     line-height: 150%;
@@ -61,16 +62,19 @@
     display: flex;
     align-items: center;
 
-    margin-left: calc(168px - 75px);
+    width: max-content;
+
+    transform: translateX(calc(150px - 75px));
 
     @include onMobile {
-      width: max-content;
       margin: 0 auto;
+
+      transform: translateX(0);
     }
   }
 
   &__link {
-    display: block;
+    display: inline-block;
 
     text-decoration: none;
     font-weight: 700;

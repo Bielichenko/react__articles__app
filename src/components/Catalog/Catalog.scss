@@ -1,8 +1,12 @@
-@import '../../utils/vars/vars';
-@import '../../utils/styles/mixins';
+@import "../../utils/vars/vars";
+@import "../../utils/styles/mixins";
 
 .catalog {
   padding: 50px 75px 63px;
+
+  @media (max-width: 600px) {
+    padding: 40px 65px 53px;
+  }
 
   @include onSmallMobile {
     padding: 15px;
@@ -10,17 +14,17 @@
 
   &__articles {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
     gap: $gap-width;
 
     margin-bottom: 45px;
-    
+
     list-style: none;
-  
+
     @include onTablet {
-      grid-template-columns: 1fr 1fr; 
+      grid-template-columns: 1fr 1fr;
     }
-  
+
     @include onMobile {
       display: flex;
       flex-direction: column;
@@ -33,5 +37,3 @@
     justify-content: center;
   }
 }
-
-
