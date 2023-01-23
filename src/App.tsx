@@ -1,7 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-alert */
-
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Catalog } from './components/Catalog/Catalog';
@@ -9,15 +5,14 @@ import { SelectedArticle } from './components/SelectedArticle/SelectedArticle';
 import { useAppDispatch } from './hooks/hook';
 import { setIsFetching, setPreparedArticles } from './store/articleSlice';
 import { prepareArticles } from './utils/functions/prepareArticles';
+import { useFetch } from './hooks/getArticlesFromServer';
 
 import './App.scss';
-import { useFetch } from './hooks/getArticlesFromServer';
 
 const URL = 'https://api.spaceflightnewsapi.net/v3/articles/';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
-
   const { articlesFromServer, isLoading, error } = useFetch(URL);
 
   useEffect(() => {
@@ -30,6 +25,7 @@ export const App: React.FC = () => {
     }
 
     if (error) {
+      // eslint-disable-next-line no-alert
       alert(error);
     }
   }, [articlesFromServer, isLoading, error]);
@@ -47,7 +43,7 @@ export const App: React.FC = () => {
         />
         <Route
           path="*"
-          element={<p>error</p>}
+          element={<p>Oops, can&apos;t find this page</p>}
         />
       </Routes>
     </div>
