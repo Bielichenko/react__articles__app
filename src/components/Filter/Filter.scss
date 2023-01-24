@@ -20,6 +20,11 @@
     width: 400px;
   }
 
+  @include onSmallMobile {
+    width: 340px;
+  }
+
+
   &__title {
     margin-bottom: 10px;
 
@@ -35,6 +40,10 @@
 
     @include onMobile {
       width: 400px;
+    }
+
+    @include onSmallMobile {
+      width: 340px;
     }
   }
 
