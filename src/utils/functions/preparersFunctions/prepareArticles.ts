@@ -19,6 +19,10 @@ export function prepareArticles(
         summaryShort = `${article.summary.slice(0, 70)}...`;
       }
 
+      if (article.title.length > 85) {
+        summaryShort = `${article.summary.slice(0, 30)}...`;
+      }
+
       return {
         ...article,
         id: parseInt(article.id, 10),
