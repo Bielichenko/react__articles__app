@@ -6,7 +6,8 @@ Tech Stack:
 + React: 6.14.15
 + SCSS: 6.14.15, 
 + React-redux: 8.0.5,
-+ React-router-dom: 6.7.0.
++ React-router-dom: 6.7.0,
++ Material UI: 5.11.0.
 
 DEMO LINK: https://bielichenko.github.io/react__articles__app/
 

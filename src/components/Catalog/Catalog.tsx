@@ -14,21 +14,35 @@ import './Catalog.scss';
 
 export const Catalog = () => {
   const dispatch = useAppDispatch();
-  const preparedArticles = useAppSelector(state => state.articles.preparedArticles);
-  const actualArticles = useAppSelector(state => state.articles.actualArticles);
-  const inputKeyWords = useAppSelector(state => state.articles.inputKeyWords);
-  const isLoading = useAppSelector(state => state.articles.isFetching);
+  const preparedArticles = useAppSelector(
+    (state) => state.articles.preparedArticles,
+  );
+  const actualArticles = useAppSelector(
+    (state) => state.articles.actualArticles,
+  );
+  const inputKeyWords = useAppSelector((state) => state.articles.inputKeyWords);
+  const isLoading = useAppSelector((state) => state.articles.isFetching);
   const [currentPage, setCurrentPage] = useState(1);
   const [articlesPerPage] = useState(6);
 
   useEffect(() => {
-    const articlesRanked = rankArticlesByKeyWords(preparedArticles, inputKeyWords);
-    const actualAndSortedArticles = filterAndSortArticles([...articlesRanked], inputKeyWords);
+    const articlesRanked = rankArticlesByKeyWords(
+      preparedArticles,
+      inputKeyWords,
+    );
+    const actualAndSortedArticles = filterAndSortArticles(
+      [...articlesRanked],
+      inputKeyWords,
+    );
 
     dispatch(setActualArticles(actualAndSortedArticles));
 
     setCurrentPage(1);
   }, [preparedArticles, inputKeyWords]);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   const pagesAmount = getPagesAmount(actualArticles.length, articlesPerPage);
   const handleChange = (e: React.ChangeEvent<unknown>, p: number) => {
@@ -44,27 +58,27 @@ export const Catalog = () => {
   return (
     <main className="catalog">
       <Filter />
-      {
-        isLoading
-          ? <Cirlce color="#363636" />
-          : (
-            <>
-              <ul className="catalog__articles">
-                { articlesForCurrentPage.map(article => (
-                  <li key={article.id}><ArticleCard article={article} /></li>
-                ))}
-              </ul>
-              <div className="catalog__paginationWrapper">
-                <Pagination
-                  count={pagesAmount}
-                  color="primary"
-                  onChange={handleChange}
-                  page={currentPage}
-                />
-              </div>
-            </>
-          )
-      }
+      {isLoading ? (
+        <Cirlce color="#363636" />
+      ) : (
+        <>
+          <ul className="catalog__articles">
+            {articlesForCurrentPage.map((article) => (
+              <li key={article.id}>
+                <ArticleCard article={article} />
+              </li>
+            ))}
+          </ul>
+          <div className="catalog__paginationWrapper">
+            <Pagination
+              count={pagesAmount}
+              color="primary"
+              onChange={handleChange}
+              page={currentPage}
+            />
+          </div>
+        </>
+      )}
     </main>
   );
 };
